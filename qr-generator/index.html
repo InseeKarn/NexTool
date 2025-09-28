@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - My Tools</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="qr.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>📱 QR Code Generator</h1>
+                <p>Generate QR codes for any text, URL, or content</p>
+            </div>
+            <nav>
+                <a href="../index.html" class="back-link">← Back to Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="qr-generator">
+                <div class="input-section">
+                    <div class="card">
+                        <h2>QR Code Content</h2>
+                        <div class="content-type-selector">
+                            <label>
+                                <input type="radio" name="contentType" value="text" checked>
+                                📝 Text
+                            </label>
+                            <label>
+                                <input type="radio" name="contentType" value="url">
+                                🌐 URL/Website
+                            </label>
+                            <label>
+                                <input type="radio" name="contentType" value="email">
+                                📧 Email
+                            </label>
+                            <label>
+                                <input type="radio" name="contentType" value="phone">
+                                📞 Phone
+                            </label>
+                            <label>
+                                <input type="radio" name="contentType" value="wifi">
+                                📶 WiFi
+                            </label>
+                        </div>
+
+                        <!-- Text Input -->
+                        <div class="input-group" id="textInput">
+                            <label for="textContent">Enter your text:</label>
+                            <textarea id="textContent" rows="4" placeholder="Enter any text you want to encode in the QR code..."></textarea>
+                        </div>
+
+                        <!-- URL Input -->
+                        <div class="input-group" id="urlInput" style="display: none;">
+                            <label for="urlContent">Website URL:</label>
+                            <input type="url" id="urlContent" placeholder="https://example.com">
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="input-group" id="emailInput" style="display: none;">
+                            <label for="emailAddress">Email Address:</label>
+                            <input type="email" id="emailAddress" placeholder="someone@example.com">
+                            <label for="emailSubject">Subject (optional):</label>
+                            <input type="text" id="emailSubject" placeholder="Email subject">
+                            <label for="emailBody">Message (optional):</label>
+                            <textarea id="emailBody" rows="3" placeholder="Email message"></textarea>
+                        </div>
+
+                        <!-- Phone Input -->
+                        <div class="input-group" id="phoneInput" style="display: none;">
+                            <label for="phoneNumber">Phone Number:</label>
+                            <input type="tel" id="phoneNumber" placeholder="+1234567890">
+                        </div>
+
+                        <!-- WiFi Input -->
+                        <div class="input-group" id="wifiInput" style="display: none;">
+                            <label for="wifiSSID">Network Name (SSID):</label>
+                            <input type="text" id="wifiSSID" placeholder="WiFi Network Name">
+                            <label for="wifiPassword">Password:</label>
+                            <input type="password" id="wifiPassword" placeholder="WiFi Password">
+                            <label for="wifiSecurity">Security Type:</label>
+                            <select id="wifiSecurity">
+                                <option value="WPA">WPA/WPA2</option>
+                                <option value="WEP">WEP</option>
+                                <option value="nopass">None (Open)</option>
+                            </select>
+                            <label>
+                                <input type="checkbox" id="wifiHidden">
+                                Hidden Network
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Customization Options</h2>
+                        <div class="options-grid">
+                            <div class="form-group">
+                                <label for="qrSize">QR Code Size:</label>
+                                <select id="qrSize">
+                                    <option value="200">Small (200x200)</option>
+                                    <option value="300" selected>Medium (300x300)</option>
+                                    <option value="400">Large (400x400)</option>
+                                    <option value="500">Extra Large (500x500)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="qrColor">QR Color:</label>
+                                <input type="color" id="qrColor" value="#000000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bgColor">Background Color:</label>
+                                <input type="color" id="bgColor" value="#ffffff">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="errorLevel">Error Correction:</label>
+                                <select id="errorLevel">
+                                    <option value="L">Low (~7%)</option>
+                                    <option value="M" selected>Medium (~15%)</option>
+                                    <option value="Q">Quartile (~25%)</option>
+                                    <option value="H">High (~30%)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button onclick="generateQR()" class="btn btn-generate">Generate QR Code</button>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <div class="card">
+                        <h2>Generated QR Code</h2>
+                        <div class="qr-display" id="qrDisplay">
+                            <div class="qr-placeholder">
+                                <div class="placeholder-icon">📱</div>
+                                <p>Enter content and click "Generate QR Code" to create your QR code</p>
+                            </div>
+                        </div>
+                        
+                        <div class="qr-actions" id="qrActions" style="display: none;">
+                            <button onclick="downloadQR()" class="btn">Download PNG</button>
+                            <button onclick="printQR()" class="btn btn-secondary">Print</button>
+                            <button onclick="shareQR()" class="btn btn-secondary">Share</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>QR Code History</h2>
+                        <div class="qr-history" id="qrHistory">
+                            <p class="no-history">No QR codes generated yet.</p>
+                        </div>
+                        <button onclick="clearHistory()" class="btn btn-secondary">Clear History</button>
+                    </div>
+
+                    <div class="card">
+                        <h2>QR Code Tips</h2>
+                        <ul class="tips-list">
+                            <li>Keep text short for better scanning reliability</li>
+                            <li>Use high contrast colors (dark on light background)</li>
+                            <li>Test your QR code before printing or sharing</li>
+                            <li>Higher error correction allows for some damage tolerance</li>
+                            <li>Larger QR codes scan more easily from distance</li>
+                            <li>Avoid very small sizes when printing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="qr.js"></script>
+</body>
+</html>

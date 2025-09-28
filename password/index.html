@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator - My Tools</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="password.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>🔐 Password Generator</h1>
+                <p>Generate strong, secure passwords</p>
+            </div>
+            <nav>
+                <a href="../index.html" class="back-link">← Back to Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="password-generator">
+                <div class="card">
+                    <h2>Password Options</h2>
+                    <div class="options-grid">
+                        <div class="form-group">
+                            <label for="passwordLength">Password Length: <span id="lengthValue">12</span></label>
+                            <input type="range" id="passwordLength" min="6" max="50" value="12" class="slider">
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeUppercase" checked>
+                                <label for="includeUppercase">Include Uppercase Letters (A-Z)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeLowercase" checked>
+                                <label for="includeLowercase">Include Lowercase Letters (a-z)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeNumbers" checked>
+                                <label for="includeNumbers">Include Numbers (0-9)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeSymbols">
+                                <label for="includeSymbols">Include Symbols (!@#$%^&*)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="excludeSimilar">
+                                <label for="excludeSimilar">Exclude Similar Characters (0, O, l, 1, I)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="generatePassword()" class="btn btn-generate">Generate Password</button>
+                </div>
+
+                <div class="card">
+                    <h2>Generated Password</h2>
+                    <div class="password-result">
+                        <div class="password-display">
+                            <input type="text" id="generatedPassword" readonly placeholder="Click 'Generate Password' to create a password">
+                            <button onclick="copyPassword()" class="btn btn-copy" id="copyBtn">Copy</button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-meter">
+                                <div class="strength-bar" id="strengthBar"></div>
+                            </div>
+                            <span class="strength-text" id="strengthText">Generate a password to see strength</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Password History</h2>
+                    <div class="password-history" id="passwordHistory">
+                        <p class="no-passwords">No passwords generated yet.</p>
+                    </div>
+                    <button onclick="clearHistory()" class="btn btn-secondary">Clear History</button>
+                </div>
+
+                <div class="card">
+                    <h2>Password Security Tips</h2>
+                    <ul class="security-tips">
+                        <li>Use a unique password for each account</li>
+                        <li>Make passwords at least 12 characters long</li>
+                        <li>Include a mix of uppercase, lowercase, numbers, and symbols</li>
+                        <li>Don't use personal information in passwords</li>
+                        <li>Consider using a password manager</li>
+                        <li>Enable two-factor authentication when available</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="password.js"></script>
+</body>
+</html>

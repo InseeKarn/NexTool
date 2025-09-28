@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - My Tools</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="bmi.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>⚖️ BMI Calculator</h1>
+                <p>Calculate your Body Mass Index and get health insights</p>
+            </div>
+            <nav>
+                <a href="../index.html" class="back-link">← Back to Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="bmi-calculator">
+                <div class="calculator-section">
+                    <div class="card">
+                        <h2>Enter Your Information</h2>
+                        <div class="unit-selector">
+                            <label>
+                                <input type="radio" name="units" value="metric" checked>
+                                Metric (kg/cm)
+                            </label>
+                            <label>
+                                <input type="radio" name="units" value="imperial">
+                                Imperial (lbs/ft)
+                            </label>
+                        </div>
+
+                        <div class="input-section" id="metricInputs">
+                            <div class="form-group">
+                                <label for="weight">Weight (kg)</label>
+                                <input type="number" id="weight" class="form-control" placeholder="Enter weight in kg" step="0.1" min="1" max="500">
+                            </div>
+                            <div class="form-group">
+                                <label for="height">Height (cm)</label>
+                                <input type="number" id="height" class="form-control" placeholder="Enter height in cm" step="0.1" min="50" max="300">
+                            </div>
+                        </div>
+
+                        <div class="input-section" id="imperialInputs" style="display: none;">
+                            <div class="form-group">
+                                <label for="weightLbs">Weight (lbs)</label>
+                                <input type="number" id="weightLbs" class="form-control" placeholder="Enter weight in pounds" step="0.1" min="1" max="1000">
+                            </div>
+                            <div class="height-imperial">
+                                <div class="form-group">
+                                    <label for="feet">Height (ft)</label>
+                                    <input type="number" id="feet" class="form-control" placeholder="Feet" min="1" max="8">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inches">Height (in)</label>
+                                    <input type="number" id="inches" class="form-control" placeholder="Inches" min="0" max="11">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age">Age (optional)</label>
+                            <input type="number" id="age" class="form-control" placeholder="Enter your age" min="1" max="120">
+                        </div>
+
+                        <button onclick="calculateBMI()" class="btn btn-calculate">Calculate BMI</button>
+                        <button onclick="clearInputs()" class="btn btn-secondary">Clear</button>
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <div class="card" id="resultCard" style="display: none;">
+                        <h2>Your BMI Result</h2>
+                        <div class="bmi-result">
+                            <div class="bmi-score">
+                                <span class="bmi-number" id="bmiValue">0.0</span>
+                                <span class="bmi-unit">kg/m²</span>
+                            </div>
+                            <div class="bmi-category" id="bmiCategory">
+                                <span class="category-text"></span>
+                                <div class="category-indicator"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="bmi-chart">
+                            <div class="chart-bar">
+                                <div class="chart-section underweight">
+                                    <span>Underweight</span>
+                                    <small>&lt; 18.5</small>
+                                </div>
+                                <div class="chart-section normal">
+                                    <span>Normal</span>
+                                    <small>18.5 - 24.9</small>
+                                </div>
+                                <div class="chart-section overweight">
+                                    <span>Overweight</span>
+                                    <small>25 - 29.9</small>
+                                </div>
+                                <div class="chart-section obese">
+                                    <span>Obese</span>
+                                    <small>≥ 30</small>
+                                </div>
+                            </div>
+                            <div class="bmi-pointer" id="bmiPointer"></div>
+                        </div>
+
+                        <div class="health-info" id="healthInfo">
+                            <!-- Health recommendations will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>BMI Information</h2>
+                        <div class="info-section">
+                            <h3>What is BMI?</h3>
+                            <p>Body Mass Index (BMI) is a measure of body fat based on height and weight. It's used as a screening tool to identify weight categories that may lead to health problems.</p>
+                            
+                            <h3>BMI Categories:</h3>
+                            <ul class="bmi-categories">
+                                <li><strong>Underweight:</strong> BMI less than 18.5</li>
+                                <li><strong>Normal weight:</strong> BMI 18.5-24.9</li>
+                                <li><strong>Overweight:</strong> BMI 25-29.9</li>
+                                <li><strong>Obese:</strong> BMI 30 or greater</li>
+                            </ul>
+
+                            <h3>Important Notes:</h3>
+                            <ul class="notes">
+                                <li>BMI is a screening tool, not a diagnostic tool</li>
+                                <li>It may not be accurate for athletes with high muscle mass</li>
+                                <li>Consult healthcare professionals for personalized advice</li>
+                                <li>BMI interpretation may vary by age and ethnicity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="bmi.js"></script>
+</body>
+</html>

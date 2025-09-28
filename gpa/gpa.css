@@ -1,0 +1,137 @@
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.back-link:hover {
+    opacity: 1;
+}
+
+.gpa-calculator {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr 1fr;
+    gap: 1rem;
+    align-items: end;
+}
+
+.courses-list {
+    min-height: 100px;
+}
+
+.no-courses {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+.course-item {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border-left: 4px solid #667eea;
+}
+
+.course-info {
+    flex: 1;
+}
+
+.course-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.course-details {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.course-actions {
+    margin-left: 1rem;
+}
+
+.btn-small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 15px;
+}
+
+.gpa-result {
+    text-align: center;
+}
+
+.result-display {
+    margin-bottom: 2rem;
+}
+
+.gpa-score {
+    margin-bottom: 1.5rem;
+}
+
+.gpa-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #667eea;
+    line-height: 1;
+}
+
+.gpa-label {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.gpa-details {
+    display: flex;
+    justify-content: space-around;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.gpa-details p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.gpa-details span {
+    color: #667eea;
+}
+
+@media (max-width: 768px) {
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .course-actions {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    .gpa-details {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .gpa-details p {
+        margin-bottom: 0.5rem;
+    }
+}

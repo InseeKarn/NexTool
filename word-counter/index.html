@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter - My Tools</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="word.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>📝 Word Counter</h1>
+                <p>Analyze your text with comprehensive statistics</p>
+            </div>
+            <nav>
+                <a href="../index.html" class="back-link">← Back to Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="word-counter">
+                <div class="input-section">
+                    <div class="card">
+                        <h2>Enter Your Text</h2>
+                        <div class="text-input-container">
+                            <textarea 
+                                id="textInput" 
+                                placeholder="Type or paste your text here to get instant word count and analysis..."
+                                rows="10"
+                            ></textarea>
+                            <div class="input-tools">
+                                <button onclick="clearText()" class="btn btn-secondary">Clear Text</button>
+                                <button onclick="copyText()" class="btn">Copy Text</button>
+                                <label for="fileInput" class="btn file-upload-btn">
+                                    📁 Upload File
+                                    <input type="file" id="fileInput" accept=".txt" style="display: none;">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-section">
+                    <div class="card">
+                        <h2>Text Statistics</h2>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number" id="wordCount">0</div>
+                                <div class="stat-label">Words</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="charCount">0</div>
+                                <div class="stat-label">Characters</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="charNoSpaceCount">0</div>
+                                <div class="stat-label">Characters (no spaces)</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="paragraphCount">0</div>
+                                <div class="stat-label">Paragraphs</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="sentenceCount">0</div>
+                                <div class="stat-label">Sentences</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="readingTime">0</div>
+                                <div class="stat-label">Reading Time (min)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Advanced Analysis</h2>
+                        <div class="analysis-grid">
+                            <div class="analysis-item">
+                                <h3>Average Words per Sentence</h3>
+                                <div class="analysis-value" id="avgWordsPerSentence">0</div>
+                            </div>
+                            <div class="analysis-item">
+                                <h3>Average Characters per Word</h3>
+                                <div class="analysis-value" id="avgCharsPerWord">0</div>
+                            </div>
+                            <div class="analysis-item">
+                                <h3>Longest Word</h3>
+                                <div class="analysis-value" id="longestWord">-</div>
+                            </div>
+                            <div class="analysis-item">
+                                <h3>Most Frequent Word</h3>
+                                <div class="analysis-value" id="mostFrequentWord">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Word Frequency</h2>
+                        <div class="frequency-controls">
+                            <button onclick="showTopWords(10)" class="btn btn-small">Top 10</button>
+                            <button onclick="showTopWords(20)" class="btn btn-small">Top 20</button>
+                            <button onclick="showTopWords(50)" class="btn btn-small">Top 50</button>
+                        </div>
+                        <div class="word-frequency" id="wordFrequency">
+                            <p class="no-data">Enter text to see word frequency analysis</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Text Formatting Tools</h2>
+                        <div class="formatting-tools">
+                            <button onclick="transformText('uppercase')" class="btn btn-small">UPPERCASE</button>
+                            <button onclick="transformText('lowercase')" class="btn btn-small">lowercase</button>
+                            <button onclick="transformText('capitalize')" class="btn btn-small">Capitalize Words</button>
+                            <button onclick="transformText('sentence')" class="btn btn-small">Sentence case</button>
+                            <button onclick="removeExtraSpaces()" class="btn btn-small">Remove Extra Spaces</button>
+                            <button onclick="removeLineBreaks()" class="btn btn-small">Remove Line Breaks</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="word.js"></script>
+</body>
+</html>
